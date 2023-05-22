@@ -1,0 +1,61 @@
+<!-- content menu  -->
+<header id="header" class="content_menu">
+    <div class="con">
+        <div class="content_menu_wrap">
+
+            <a class="home" href="index.html">ESC</a>
+
+            <!-- 검색 -->
+            <div class="search">
+                <input type="text" placeholder="상품 검색">
+                <img src="https://image.istarbucks.co.kr/common/img/common/icon_magnifier_black.png">
+            </div>
+            <!-- 검색 끝 -->
+
+            <!-- 상품 선택 메뉴 -->
+            <nav class="content_menu_equip">
+                <ul>
+                    <li><a href="product-kb.html?active=keyboard">Keyboard</a>
+                        <ul class="content_second_menu">
+                            <li><a href="#">유선 키보드</a></li>
+                            <li><a href="#">무선 키보드</a></li>
+                            <li><a href="#">유선 / 무선</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="product-kc.html?active=keycaps">Keycaps</a></li>
+                    <li><a href="product-sw.html?active=switch">Switch</a></li>
+                </ul>
+            </nav>
+            <nav class="content_menu_info">
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Join</a></li>
+                    <li><a href="#">Cart</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</header>
+<!-- content menu 끝 -->
+
+
+<script>
+    $(document).ready(function () {
+        // URL에서 active 매개변수 값 가져오기
+        const params = new URLSearchParams(window.location.search);
+        const activeTab = params.get('active');
+
+        // activeTab 값에 해당하는 li에 active 클래스 추가
+        if (activeTab) {
+            $(`.content_menu_equip > ul > li:has(a[href*=${activeTab}])`).addClass('active');
+        }
+
+        // li 클릭 시 active 클래스 추가 및 URL 매개변수 업데이트
+        $('.content_menu_equip > ul > li').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            const tabName = $(this).find('a').attr('href').substring(1);
+            history.replaceState(null, null, `?active=${tabName}`);
+        });
+    });
+</script>
