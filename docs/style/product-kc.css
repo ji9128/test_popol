@@ -1,0 +1,149 @@
+/* _______________________ 키캡 판매 페이지 */
+.shopping_kc {
+    height: 100vh;
+    color: black;
+}
+
+.product_wrap>ul {
+    --cc: 3;
+    --x-gap: 15px;
+    --y-gap: 30px;
+}
+
+.product_img>img {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 400px;
+    transition: transform 1s;
+}
+
+.product_img:first-child {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border: 3px solid black;
+    overflow: hidden;
+}
+
+.product_img:first-child::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: opacity 1s;
+}
+
+.product_wrap li:hover>.product_img:first-child::after {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.product_info a:hover {
+    text-decoration: underline 3px black;
+    text-underline-offset: 5px;
+}
+
+.product_cover {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    padding-top: 5px;
+    border: 3px solid black;
+    border-radius: 10px;
+    transform: translatex(-50%) translatey(-50%);
+    text-align: center;
+    font-size: 24px;
+    font-family: 'TheJamsil5Bold';
+    opacity: 0;
+    z-index: 2;
+    transition: opacity .5s;
+}
+
+.product_wrap li:hover .product_cover {
+    opacity: 1;
+}
+
+.product_info {
+    position: relative;
+    width: 400px;
+    height: 80px;
+    font-size: 18px;
+    text-align: start;
+    padding-left : 5px;
+}
+
+.product_info>a {
+    width: 400px;
+    height: 40px;
+    margin-top: 5px;
+    /* 	margin-bottom : 5px; */
+    font-size: 24px;
+    font-family: 'TheJamsil5Bold';
+}
+
+.price {
+    width: 100px;
+}
+
+
+/* 찜하기 버튼 */
+.right_area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translatex(-10%) translatey(10%);
+}
+
+.right_area a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.right_area .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid 2px #eaeaea;
+    background-color: #fff;
+}
+
+.icon.heart img {
+    width: 25px;
+    height: 25px;
+    z-index: 3;
+}
+
+.icon.heart.fas {
+    color: red;
+}
+
+.heart {
+    transform-origin: center;
+}
+
+.heart.active img {
+    animation: animateHeart .3s linear forwards;
+}
+
+@keyframes animateHeart {
+    0% {
+        transform: scale(.2);
+    }
+
+    40% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
